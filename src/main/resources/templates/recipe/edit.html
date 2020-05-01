@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+    <head>
+        <title th:text="'Edit recipe'"></title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="container pt-5">
+                <div class="mb-5">
+                    <a href="/" class="">
+                        <i class="fa fa-arrow-left mr-2"></i>
+                        <span th:text="'List'"></span>
+                    </a>
+                </div>
+
+                <h1>Edit recipe <span th:text="${recipe.name}"></span></h1>
+
+                <div th:insert="recipe/fragments/form.html :: form"></div>
+            </div>
+        </div>
+    </body>
+</html>

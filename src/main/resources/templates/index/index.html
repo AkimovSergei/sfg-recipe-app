@@ -1,44 +1,59 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Recipe App</title>
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-              crossorigin="anonymous">
+        <title th:text="'Recipes list'"></title>
     </head>
     <body>
-        <div class="container">
-            <h1>Recipe App</h1>
-
-            <table class="table mt-5">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="recipe : ${recipes}">
-                        <td th:text="${recipe.id}"></td>
-                        <td th:text="${recipe.description}"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div layout:fragment="content">
+            <div class="container pt-5">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="row">
+                            <div class="col" th:text="'Recipe list'"></div>
+                            <div class="col text-right">
+                                <a href="#"
+                                   class="btn btn-light btn-sm"
+                                   role="button"
+                                   th:href="@{'/recipe/create'}"
+                                >
+                                    <span th:text="'Create'"></span>
+                                    <i class="fa fa-plus ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="recipe : ${recipes}">
+                                    <td th:text="${recipe.id}"></td>
+                                    <td th:text="${recipe.description}"></td>
+                                    <td>
+                                        <a href="#"
+                                           th:href="@{'/recipe/' + ${recipe.id}}"
+                                           th:text="'View'"
+                                        ></a>
+                                        <a href="#"
+                                           th:href="@{'/recipe/' + ${recipe.id} + '/edit'}"
+                                           th:text="'Edit'"
+                                        ></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-                crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-                crossorigin="anonymous"></script>
     </body>
 </html>

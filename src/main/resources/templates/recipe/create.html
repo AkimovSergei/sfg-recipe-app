@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+    <head>
+        <title th:text="'Create recipe'"></title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="container pt-5">
+                <div class="mb-5">
+                    <a href="/" class="">
+                        <i class="fa fa-arrow-left mr-2"></i>
+                        <span th:text="'Back'"></span>
+                    </a>
+                </div>
+
+                <h1>Create recipe</h1>
+            </div>
+        </div>
+    </body>
+</html>

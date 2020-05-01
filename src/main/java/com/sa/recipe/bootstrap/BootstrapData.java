@@ -7,11 +7,13 @@ import com.sa.recipe.domain.Recipe;
 import com.sa.recipe.repositories.RecipeRepository;
 import com.sa.recipe.services.CategoryService;
 import com.sa.recipe.services.UnitOfMeasureService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class BootstrapData implements CommandLineRunner {
 
@@ -27,10 +29,12 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        log.debug("Bootstrap application");
 
         Recipe recipe = new Recipe();
         recipe.setCookTime(50);
         recipe.setPrepTime(10);
+        recipe.setName("Guacamole");
         recipe.setDescription("The best guacamole keeps it simple: just ripe avocados, salt, " +
                 "a squeeze of lime, onions, chiles, cilantro, and some chopped tomato. " +
                 "Serve it as a dip at your next party or spoon it on top of tacos for an easy dinner upgrade.");
@@ -60,5 +64,7 @@ public class BootstrapData implements CommandLineRunner {
         recipe.addCategory(categoryService.findByDescriptionOrCreate("Fast Food"));
 
         recipeRepository.save(recipe);
+
+        log.debug("Receipe created");
     }
 }
