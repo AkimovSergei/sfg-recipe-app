@@ -1,13 +1,16 @@
 package com.sa.recipe.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @EqualsAndHashCode(exclude = "recipes")
 public class Category {
@@ -20,9 +23,6 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes = new HashSet<>();
-
-    public Category() {
-    }
 
     public Category(String description) {
         this.description = description;

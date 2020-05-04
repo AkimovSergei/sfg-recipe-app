@@ -4,7 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Note {
 
@@ -17,9 +21,6 @@ public class Note {
 
     @Lob
     private String notes;
-
-    public Note() {
-    }
 
     public Note(String notes) {
         this.notes = notes;

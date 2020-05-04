@@ -7,7 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class UnitOfMeasure {
 
@@ -16,9 +20,6 @@ public class UnitOfMeasure {
     private Long id;
 
     private String description;
-
-    public UnitOfMeasure() {
-    }
 
     public UnitOfMeasure(String description) {
         this.description = description;
